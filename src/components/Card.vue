@@ -16,27 +16,6 @@
         :true-answer="answer.isTrue"
       ></radio-input>
     </template>
-
-    <radio-input
-      :answer="'64 году до н.э.'"
-      :is-enable="true"
-      :true-answer="false"
-    ></radio-input>
-    <radio-input
-      :answer="'312 году до н.э.'"
-      :is-enable="true"
-      :true-answer="false"
-    ></radio-input>
-    <radio-input
-      :answer="'140 году до н.э.'"
-      :is-enable="true"
-      :true-answer="false"
-    ></radio-input>
-    <radio-input
-      :answer="'323 году до н.э.'"
-      :is-enable="true"
-      :true-answer="false"
-    ></radio-input>
   </a>
 </template>
 

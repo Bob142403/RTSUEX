@@ -12,7 +12,13 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import Card from "../components/Card.vue";
-</script>
+import { useStore } from "../store";
 
-<style></style>
+const store = useStore();
+
+console.log(store);
+
+const tests = computed(() => store.state.testsModule.tests);
+</script>
