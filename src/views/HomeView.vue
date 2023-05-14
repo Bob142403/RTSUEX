@@ -1,24 +1,25 @@
 <template>
-  <Card
-    :arr-answers="[{ id: 1, text: 'Hello', isTrue: true }]"
-    :is-disabaled="true"
-    :question="'Примерно в __________________ население земледельческих областей Бактрии и Согда объединилось с кочевыми племенами да-юэчжи и окончательно низвергло греко-македонское владычество в Средней Азии. '"
-  ></Card>
-  <Card
-    :arr-answers="[{ id: 1, text: 'Hello', isTrue: true }]"
-    :is-disabaled="true"
-    :question="'Примерно в __________________ население земледельческих областей Бактрии и Согда объединилось с кочевыми племенами да-юэчжи и окончательно низвергло греко-македонское владычество в Средней Азии. '"
-  ></Card>
+  <Filter v-model="text" />
+  <template v-for="test in tests" :key="test.id">
+    <Card
+      :arr-answers="test.answers"
+      :is-disabaled="true"
+      :question="test.question"
+    />
+  </template>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import Card from "../components/Card.vue";
+import { computed, ref } from "vue";
 import { useStore } from "../store";
 
+import Card from "../components/Card.vue";
+import Filter from "../components/Filter.vue";
+
 const store = useStore();
+const text = ref("");
 
-console.log(store);
+store.dispatch("fetchTests");
 
-const tests = computed(() => store.state.testsModule.tests);
+const tests = computed(() => store.getters.getFilteredTests(text.value));
 </script>

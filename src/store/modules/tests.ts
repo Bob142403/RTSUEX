@@ -8,13 +8,22 @@ export interface TestsState {
 }
 
 export const testsModule: Module<TestsState, State> = {
-  actions: {},
+  actions: {
+    async fetchTests(ctx) {
+      await testsApi.getTests().then((res) => ctx.commit("setTests", res));
+    },
+  },
   state: () => ({ tests: [] }),
-  getters: {},
+  getters: {
+    getFilteredTests: (state) => (text: string) =>
+      state.tests.filter((test) => test.question.includes(text)),
+  },
   mutations: {
-    addTest: (state, obj) => {
-      console.log(obj);
-      state.tests.push(obj);
+    addTest: (state, newTest: Test) => {
+      state.tests.push(newTest);
+    },
+    setTests: (state, tests: Test[]) => {
+      state.tests = tests;
     },
   },
 };

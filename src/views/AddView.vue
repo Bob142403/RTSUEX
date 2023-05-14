@@ -146,6 +146,7 @@
 import { ref } from "vue";
 import { testsApi } from "../servers/tests-api";
 import { useStore } from "../store/index";
+import Test from "../types/Test";
 
 const store = useStore();
 const question = ref("");
@@ -165,10 +166,9 @@ function Clean() {
   fiveAnswer.value = "";
   correctAnswer.value = "";
 }
-console.log(store);
 
 function addTest() {
-  const obj = {
+  const obj: Test = {
     answers: [
       { text: firstAnswer.value, isTrue: correctAnswer.value === "0" },
       { text: secondAnswer.value, isTrue: correctAnswer.value === "1" },
@@ -179,6 +179,7 @@ function addTest() {
     question: question.value,
   };
   testsApi.addTest(obj);
+  store.commit("addTest", obj);
   Clean();
 }
 </script>

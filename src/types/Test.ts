@@ -1,5 +1,7 @@
+import Answer from "./Answer";
+
 interface Test {
-  answers: object[];
+  answers: Answer[];
   question: string;
 }
 export default Test;
