@@ -4,7 +4,7 @@
       <input
         type="text"
         id="floating_outlined"
-        v-model="question"
+        v-model="question.question"
         class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder=" "
       />
@@ -18,8 +18,8 @@
       <input
         id="default-radio-1"
         type="radio"
-        value="0"
-        v-model="correctAnswer"
+        :value="0"
+        v-model="question.currentAnswer"
         name="default-radio"
         class="w-4 h-4 mr-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
@@ -27,7 +27,7 @@
         <input
           type="text"
           id="floating_outlined1"
-          v-model="firstAnswer"
+          v-model="question.answers[0].text"
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
@@ -42,8 +42,8 @@
       <input
         id="default-radio-2"
         type="radio"
-        value="1"
-        v-model="correctAnswer"
+        :value="1"
+        v-model="question.currentAnswer"
         name="default-radio"
         class="w-4 h-4 mr-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
@@ -51,7 +51,7 @@
         <input
           type="text"
           id="floating_outlined2"
-          v-model="secondAnswer"
+          v-model="question.answers[1].text"
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
@@ -66,8 +66,8 @@
       <input
         id="default-radio-3"
         type="radio"
-        value="2"
-        v-model="correctAnswer"
+        :value="2"
+        v-model="question.currentAnswer"
         name="default-radio"
         class="w-4 h-4 mr-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
@@ -75,7 +75,7 @@
         <input
           type="text"
           id="floating_outlined3"
-          v-model="thirdAnswer"
+          v-model="question.answers[2].text"
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
@@ -90,8 +90,8 @@
       <input
         id="default-radio-4"
         type="radio"
-        value="3"
-        v-model="correctAnswer"
+        :value="3"
+        v-model="question.currentAnswer"
         name="default-radio"
         class="w-4 h-4 mr-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
@@ -99,7 +99,7 @@
         <input
           type="text"
           id="floating_outlined4"
-          v-model="fourAnswer"
+          v-model="question.answers[3].text"
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
@@ -114,16 +114,16 @@
       <input
         id="default-radio-5"
         type="radio"
-        value="4"
+        :value="4"
         name="default-radio"
-        v-model="correctAnswer"
+        v-model="question.currentAnswer"
         class="w-4 h-4 mr-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
       <div class="relative w-full">
         <input
           type="text"
           id="floating_outlined5"
-          v-model="fiveAnswer"
+          v-model="question.answers[4].text"
           class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
         />
@@ -151,37 +151,33 @@ import { useStore } from "../store/index";
 import Test from "../types/Test";
 
 const store = useStore();
-const question = ref("");
-const correctAnswer = ref("");
-const firstAnswer = ref("");
-const secondAnswer = ref("");
-const thirdAnswer = ref("");
-const fourAnswer = ref("");
-const fiveAnswer = ref("");
 
-function Clean() {
-  question.value = "";
-  firstAnswer.value = "";
-  secondAnswer.value = "";
-  thirdAnswer.value = "";
-  fourAnswer.value = "";
-  fiveAnswer.value = "";
-  correctAnswer.value = "";
-}
+const question = ref<Test>({
+  answers: [
+    { text: "" },
+    { text: "" },
+    { text: "" },
+    { text: "" },
+    { text: "" },
+  ],
+  question: "",
+  currentAnswer: -1,
+});
 
 function addTest() {
-  const obj: Test = {
+  testsApi.addTest(question.value);
+  store.commit("addTest", question.value);
+
+  question.value = {
     answers: [
-      { text: firstAnswer.value, isTrue: correctAnswer.value === "0" },
-      { text: secondAnswer.value, isTrue: correctAnswer.value === "1" },
-      { text: thirdAnswer.value, isTrue: correctAnswer.value === "2" },
-      { text: fourAnswer.value, isTrue: correctAnswer.value === "3" },
-      { text: fiveAnswer.value, isTrue: correctAnswer.value === "4" },
+      { text: "" },
+      { text: "" },
+      { text: "" },
+      { text: "" },
+      { text: "" },
     ],
-    question: question.value,
+    question: "",
+    currentAnswer: -1,
   };
-  testsApi.addTest(obj);
-  store.commit("addTest", obj);
-  Clean();
 }
 </script>

@@ -5,6 +5,7 @@
       :arr-answers="test.answers"
       :is-disabaled="true"
       :question="test.question"
+      :correct-answer="test.currentAnswer"
     />
   </template>
 </template>

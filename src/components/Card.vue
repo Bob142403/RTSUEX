@@ -8,11 +8,11 @@
       {{ question }}
     </h5>
 
-    <template v-for="answer in arrAnswers" :key="answer.id">
+    <template v-for="(answer, index) in arrAnswers" :key="answer.id">
       <radio-input
         :answer="answer.text"
         :is-enable="isDisabaled"
-        :true-answer="answer.isTrue"
+        :true-answer="correctAnswer === index"
       ></radio-input>
     </template>
   </a>
@@ -26,6 +26,9 @@ interface Props {
   arrAnswers: Answer[];
   question: string;
   isDisabaled: boolean;
+  correctAnswer: number;
 }
 const props = defineProps<Props>();
+
+console.log(props.correctAnswer);
 </script>
