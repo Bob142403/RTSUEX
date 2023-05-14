@@ -16,7 +16,7 @@ export const testsModule: Module<TestsState, State> = {
   state: () => ({ tests: [] }),
   getters: {
     getFilteredTests: (state) => (text: string) =>
-      state.tests.filter((test) => test.question.includes(text)),
+      state.tests.filter((test) => test.question.includes(text.trim())),
   },
   mutations: {
     addTest: (state, newTest: Test) => {
