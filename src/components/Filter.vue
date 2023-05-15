@@ -27,10 +27,10 @@
     <input
       type="search"
       id="search"
-      class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-black-500 focus:border-black-500 dark:bg-gray-700 dark:border-gray-600"
       placeholder="Search"
       :value="modelValue"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="updateValue"
       required
     />
   </div>
@@ -40,7 +40,7 @@
 const props = defineProps(["modelValue"]);
 const emits = defineEmits(["update:modelValue"]);
 
-// function updateInput(event: any) {
-//   emits("update:modelValue", event.target.value);
-// }
+const updateValue = (e: Event) => {
+  emits("update:modelValue", (e.target as HTMLInputElement).value);
+};
 </script>
