@@ -16,7 +16,9 @@ export const testsModule: Module<TestsState, State> = {
   state: () => ({ tests: [] }),
   getters: {
     getFilteredTests: (state) => (text: string) =>
-      state.tests.filter((test) => test.question.includes(text.trim())),
+      state.tests.filter((test) =>
+        test.question.toLowerCase().includes(text.trim().toLowerCase())
+      ),
   },
   mutations: {
     addTest: (state, newTest: Test) => {

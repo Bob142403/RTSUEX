@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center mt-1">
+  <div class="flex items-center mt-2">
     <input
       :checked="trueAnswer"
       :disabled="isEnable"
@@ -10,7 +10,7 @@
     />
     <label
       for="green-radio"
-      class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+      class="ml-2 text-base font-medium text-gray-900 dark:text-gray-300"
       >{{ answer }}</label
     >
   </div>
@@ -25,4 +25,3 @@ interface RadioProps {
 
 defineProps<RadioProps>();
 </script>
-

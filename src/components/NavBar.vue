@@ -3,17 +3,6 @@
     <div
       class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
     >
-      <a class="flex items-center">
-        <img
-          src="https://flowbite.com/docs/images/logo.svg"
-          class="h-8 mr-3"
-          alt="Flowbite Logo"
-        />
-        <span
-          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >RTSU EX</span
-        >
-      </a>
       <button
         data-collapse-toggle="navbar-default"
         type="button"
@@ -21,7 +10,6 @@
         aria-controls="navbar-default"
         aria-expanded="false"
       >
-        <span class="sr-only">Open main menu</span>
         <svg
           class="w-6 h-6"
           aria-hidden="true"
