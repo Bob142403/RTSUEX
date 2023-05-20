@@ -12,15 +12,16 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { useStore } from "../store";
+import { tests as Tests } from "../tests";
 
 import Card from "../components/Card.vue";
 import Filter from "../components/Filter.vue";
 
-const store = useStore();
 const text = ref("");
 
-store.dispatch("fetchTests");
-
-const tests = computed(() => store.getters.getFilteredTests(text.value));
+const tests = computed(() =>
+  Tests.filter((test) =>
+    test.question.toLowerCase().includes(text.value.trim().toLowerCase())
+  )
+);
 </script>

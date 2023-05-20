@@ -4,7 +4,7 @@
     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
     >Search</label
   >
-  <div class="relative">
+  <div class="relative mx-2 mt-2">
     <div
       class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
     >
