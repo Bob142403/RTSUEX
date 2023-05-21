@@ -20,7 +20,7 @@ export const tests: Test[] = [
       },
     ],
     question: "Понятие каменный век и на какие периоды он разделен",
-    currentAnswer: 1,
+    currentAnswer: 0,
     id: 1,
   },
   {
@@ -1044,7 +1044,7 @@ export const tests: Test[] = [
       },
     ],
     question: "В каком году арабский завоеватель Кутайба захватил Бухару",
-    currentAnswer: 4,
+    currentAnswer: 3,
     id: 47,
   },
   {
@@ -1176,7 +1176,7 @@ export const tests: Test[] = [
       },
     ],
     question: "Кто являлся основателем государства Саманидов",
-    currentAnswer: 2,
+    currentAnswer: 0,
     id: 53,
   },
   {
@@ -1421,7 +1421,7 @@ export const tests: Test[] = [
       },
     ],
     question: "Укажите годы правления И. Сомони в Бухаре",
-    currentAnswer: 2,
+    currentAnswer: 4,
     id: 64,
   },
   {
@@ -1443,7 +1443,7 @@ export const tests: Test[] = [
       },
     ],
     question: "Укажите столицу государства Саманидов",
-    currentAnswer: 0,
+    currentAnswer: 2,
     id: 65,
   },
   {
@@ -1511,7 +1511,7 @@ export const tests: Test[] = [
       },
     ],
     question: "Кто был последним правителем (эмиром) династии Саманидов",
-    currentAnswer: 4,
+    currentAnswer: 2,
     id: 68,
   },
   {

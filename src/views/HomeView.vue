@@ -1,12 +1,13 @@
 <template>
   <Filter v-model="text" />
-  <template v-for="test in tests" :key="test.id">
+  <template v-for="(test, index) in tests" :key="test.id">
     <Card
       :arr-answers="test.answers"
       :is-disabaled="true"
       :question="test.question"
       :correct-answer="test.currentAnswer"
     />
+    {{ index + 1 }}
   </template>
 </template>
 
@@ -24,4 +25,11 @@ const tests = computed(() =>
     test.question.toLowerCase().includes(text.value.trim().toLowerCase())
   )
 );
+/**
+ * 47
+ * 53
+ * 64
+ * 65
+ * 68
+ */
 </script>
