@@ -7,7 +7,6 @@
       :question="test.question"
       :correct-answer="test.currentAnswer"
     />
-    {{ index + 1 }}
   </template>
 </template>
 
@@ -25,11 +24,4 @@ const tests = computed(() =>
     test.question.toLowerCase().includes(text.value.trim().toLowerCase())
   )
 );
-/**
- * 47
- * 53
- * 64
- * 65
- * 68
- */
 </script>
