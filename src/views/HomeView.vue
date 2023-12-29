@@ -1,6 +1,6 @@
 <template>
   <Filter v-model="text" />
-  <template v-for="(test, index) in tests" :key="test.id">
+  <template v-for="test in tests" :key="test.id">
     <Card
       :arr-answers="test.answers"
       :is-disabaled="true"
